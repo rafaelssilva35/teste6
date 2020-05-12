@@ -27,10 +27,12 @@ CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 3f69d37532ba bitnami/laravel:7 "/app-entrypoint.sh …" 17 minutes ago
 ```
 
-### 3 no resultado do passo 2 pegue o id do container que tiver a imagem {bitnami/laravel:7} e execute o seguinte comando
+### 3 no resultado do passo 2 pegue o id {3f69d37532ba} do container que tiver a imagem {bitnami/laravel:7} e execute o seguinte comando
 
 ```sh
-$ docker exec php artisan db:seed
+$ cp .env.example .env
+$ docker exec 3f69d37532ba php artisan key:generate
+$ docker exec 3f69d37532ba php artisan db:seed
 ```
 ```sh
 saída como podem ver pode demorar um pouco para povoar o bando devido o volume de dados
@@ -41,3 +43,4 @@ Seeded: User (21.8 seconds)
 
 Seeding: UserAcess
 ```
+
